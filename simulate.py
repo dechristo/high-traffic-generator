@@ -4,14 +4,15 @@ import requests
 
 concurrent_requests = 200
 num_threads = 4
+url = 'url here'
+post_body = {}
 
 
 def make_request(q):
     while not q.empty():
         current = q.get()
         print(f'request {current} sent.')
-        requests.post('http://localhost:3000/applications/telco/graphql',
-            json={'query': '{getCitiesByPostCode(postCode: "12107"){cityName}}'})
+        requests.post(url, json=post_body)
         q.task_done()
 
 
